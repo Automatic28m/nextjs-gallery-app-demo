@@ -1,60 +1,58 @@
-"use client"
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
-// Lucide Icon
-import { Brush } from "lucide-react";
-import { UserRound } from "lucide-react";
-import { Calendar } from "lucide-react";
+import ArtistSection from './components/ArtistSection';
+import GallerySection from "./components/GallerySection";
+import NewsLetterSignup from "./components/NewsLetterSignup";
+import QuoteComponent from "./components/QuoteComponent";
+import ReviewComponent from "./components/ReviewComponent";
 
 export default function Home() {
 
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch("https://api.artic.edu/api/v1/artworks")
-      .then((res) => res.json())
-      .then((data) => setData(data.data));
-  }, []);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data])
-
   return (
-    <div className="container max-w-5xl mx-auto my-16 px-3">
-      <h1 className="text-5xl font-bold text-primary font-durer">Art Institute of Chicago</h1>
-      <p className="text-gray">
-        Welcome to the Art Institute of Chicago, home to a collection of art that spans centuries and the globe—and one of Tripadvisor’s “Best of the Best” US attractions of 2024. We look forward to your visit and invite you to explore our many exhibitions, join one of our free daily tours, or make your own tour of must-see works.
-      </p>
-      <section id="gallery" className="mt-6">
-        <h2 className="font-bold text-2xl font-durer">Gallery</h2>
-        <div className="grid sm:grid-cols-3 gap-4">
-          {data.map((item, index) => {
-            return (
-              <div className="card shadow rounded bg-white relative overflow-hidden" key={index} style={{ height: 300 }}>
-                <div className="relative w-full h-full">
-                  <Image
-                    src={`https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`}
-                    alt={item.title}
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <div className="card-body p-3 text-white bg-linear-to-t from-slate-900/80 to-slate-900/0 w-full absolute bottom-0">
-                  <div id="title">{item.title}</div>
-                  <div id="artist_title" className="flex flex-row gap-2 items-center text-sm">
-                    <UserRound size={15} />{`${item.artist_title}`}
-                  </div>
-                  <div id="date_display" className="flex flex-row gap-2 items-center text-sm">
-                    <Calendar size={15} />{`${item.date_display}`}
-                  </div>
-                </div>
-              </div>
-            )
-          })}
+    <>
+      <div className=" h-[400px] w-full relative">
+        <Image
+          src="/images/josh-liu-Tjio9DgtIls-unsplash.jpg"
+          alt="banner"
+          fill
+          style={{ objectFit: "cover" }}
+        />
+        <div id="banner-wrap" className="px-3 absolute inset-0 bg-slate-900/60 z-10">
+          <div className="max-w-5xl mx-auto">
+            <h1 className="text-7xl font-bold font-durer absolute z-50 h-full flex flex-col justify-center text-white">Studio Solstice</h1>
+          </div>
         </div>
-      </section>
-    </div>
+      </div>
+      <div className="container max-w-5xl mx-auto my-32 px-3">
+        <section className="">
+          <h1 className="text-3xl font-bold text-primary font-durer">Welcome</h1>
+          <p className="text-gray">
+            Where light meets creation and every piece tells a story.
+
+            We are a seasonal art gallery devoted to showcasing soulful, curated works by emerging and established artists from around the world. Inspired by nature’s rhythms and the timeless beauty of transformation, our collections evolve like the solstice—marking new beginnings, quiet reflections, and radiant expression.
+
+            Discover art that moves with you.
+          </p>
+        </section>
+        <div id="gallery">
+          <GallerySection />
+        </div>
+        <div id="quote">
+          <QuoteComponent
+            message={"Art is the light we carry through the seasons—quiet, radiant, and always becoming."}
+            author={"Studio Solstice"}
+          />
+        </div>
+        <section id="artist">
+          <ArtistSection />
+        </section>
+        <div id="review">
+          <ReviewComponent />
+        </div>
+        <div id="news-letter-signup">
+          <NewsLetterSignup />
+        </div>
+      </div>
+    </>
   );
 }

@@ -10,8 +10,8 @@ function Navbar() {
     <nav className="bg-white shadow fixed top-0 w-full z-50">
       <div className="flex items-center justify-between px-6 py-2 max-w-5xl mx-auto">
         <Link href="/" className="flex items-center gap-3 text-xl">
-          <Image src="/AIC_logo.png" width={60} height={60} alt="Logo" />
-          {/* <h1 className="font-durer">Art Institute of Chicago</h1> */}
+          <Image src="/StudioSolstice.png" width={60} height={60} alt="Logo" />
+          {/* <h1 className="font-durer">Studio Solstice</h1> */}
         </Link>
         {/* Hamburger */}
         <button
@@ -55,13 +55,13 @@ function Navbar() {
       {open && (
         <ul className="sm:hidden flex flex-col gap-4 px-6 pb-4 text-slate-900 font-durer text-lg bg-white shadow mt-6">
           <li>
-            <Link href="/about" onClick={() => setOpen(false)}>
-              About
+            <Link href="/" onClick={() => setOpen(false)}>
+              Home
             </Link>
           </li>
           <li>
-            <Link href="/" onClick={() => setOpen(false)}>
-              Home
+            <Link href="/about" onClick={() => setOpen(false)}>
+              About
             </Link>
           </li>
           <li>
