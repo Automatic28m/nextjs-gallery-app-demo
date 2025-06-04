@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function About() {
   return (
-    <div className="container max-w-5xl mx-auto py-16">
+    <div className="container max-w-5xl mx-auto py-16 px-3">
       <div className="py-16">
         <h1 className="text-3xl font-bold text-primary font-durer">About</h1>
         <b>Art in Rhythm with Light</b>
